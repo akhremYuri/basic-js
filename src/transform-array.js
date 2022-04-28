@@ -1,5 +1,6 @@
-const CustomError = require("../extensions/custom-error");
+const { NotImplementedError } = require('../extensions/index.js');
 
+<<<<<<< HEAD
 module.exports = function transform(arr) {
   if (!Array.isArray(arr))
     throw new Error("'arr' parameter must be an instance of the Array!");
@@ -36,4 +37,26 @@ module.exports = function transform(arr) {
     } else result.push(arr[i]);
   }
   return result;
+=======
+/**
+ * Create transformed array based on the control sequences that original
+ * array contains
+ * 
+ * @param {Array} arr initial array
+ * @returns {Array} transformed array
+ * 
+ * @example
+ * 
+ * transform([1, 2, 3, '--double-next', 4, 5]) => [1, 2, 3, 4, 4, 5]
+ * transform([1, 2, 3, '--discard-prev', 4, 5]) => [1, 2, 4, 5]
+ * 
+ */
+function transform(/* arr */) {
+  throw new NotImplementedError('Not implemented');
+  // remove line with error and write your code here
+}
+
+module.exports = {
+  transform
+>>>>>>> refs/remotes/origin/master
 };

@@ -1,6 +1,19 @@
-const CustomError = require("../extensions/custom-error");
+const { NotImplementedError } = require("../extensions/index.js");
 
-module.exports = function createDreamTeam(members) {
+/**
+ * Create name of dream team based on the names of its members
+ *
+ * @param {Array} members names of the members
+ * @return {String | Boolean} name of the team or false
+ * in case of incorrect members
+ *
+ * @example
+ *
+ * createDreamTeam(['Matt', 'Ann', 'Dmitry', 'Max']) => 'ADMM'
+ * createDreamTeam(['Olivia', 1111, 'Lily', 'Oscar', true, null]) => 'LOO'
+ *
+ */
+function createDreamTeam(members) {
   if (!Array.isArray(members)) return false;
   let names = [];
   for (let i = 0; i < members.length; i++) {
@@ -11,4 +24,8 @@ module.exports = function createDreamTeam(members) {
   }
   names = names.sort();
   return names.join("");
+}
+
+module.exports = {
+  createDreamTeam,
 };
