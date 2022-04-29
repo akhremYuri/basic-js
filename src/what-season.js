@@ -1,15 +1,28 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require("../extensions/index.js");
 
-<<<<<<< HEAD
-module.exports = function getSeason(date) {
-  if (date === undefined || date === null)
+/**
+ * Extract season from given date and expose the enemy scout!
+ *
+ * @param {Date | FakeDate} date real or fake date
+ * @returns {String} time of the year
+ *
+ * @example
+ *
+ * getSeason(new Date(2020, 02, 31)) => 'spring'
+ *
+ */
+function getSeason(date) {
+  if (date === undefined)
+    //|| date === null
     return "Unable to determine the time of year!";
-  if (
-    typeof date !== "object" ||
-    date.constructor !== Date ||
-    date.getTime() !== date.getTime()
-  )
+  if (date === null || typeof date !== "object" || date.constructor !== Date)
     throw new Error("Invalid date!");
+  try {
+    date.getTime();
+  } catch (err) {
+    throw new Error("Invalid date!");
+  }
+
   let month = date.getMonth();
   switch (month) {
     case 0:
@@ -31,24 +44,8 @@ module.exports = function getSeason(date) {
     default:
       return "Unable to determine the time of year!";
   }
-=======
-/**
- * Extract season from given date and expose the enemy scout!
- * 
- * @param {Date | FakeDate} date real or fake date
- * @returns {String} time of the year
- * 
- * @example
- * 
- * getSeason(new Date(2020, 02, 31)) => 'spring'
- * 
- */
-function getSeason(/* date */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
 }
 
 module.exports = {
-  getSeason
->>>>>>> refs/remotes/origin/master
+  getSeason,
 };

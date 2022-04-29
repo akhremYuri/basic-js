@@ -5,12 +5,13 @@ const { NotImplementedError } = require("../extensions/index.js");
  *
  */
 const chainMaker = {
-  links: [],
+  chainArr: [],
   getLength() {
-    return this.links.length;
+    return this.chainArr.length;
   },
   addLink(value) {
-    this.links.push(`( ${value} )`);
+    let str = `( ${value} )`;
+    this.chainArr.push(str);
     return this;
   },
   removeLink(position) {
@@ -18,21 +19,21 @@ const chainMaker = {
       typeof position !== "number" ||
       position !== Math.trunc(position) ||
       position <= 0 ||
-      position > this.links.length
+      position > this.chainArr.length
     ) {
-      throw new Error("You can't remove incorrect link!");
+      throw new Error('You can\'t remove incorrect link!');
     }
-    this.links.splice(position - 1, 1);
+    this.chainArr.splice(position - 1, 1);
     return this;
   },
   reverseChain() {
-    this.links.reverse();
+    this.chainArr.reverse();
     return this;
   },
   finishChain() {
     let result = "";
-    result = this.links.join("~~");
-    this.links = [];
+    result = this.chainArr.join("~~");
+    this.chainArr = [];
     return result;
   },
 };
