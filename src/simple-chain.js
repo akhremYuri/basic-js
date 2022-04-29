@@ -21,6 +21,7 @@ const chainMaker = {
       position <= 0 ||
       position > this.chainArr.length
     ) {
+      this.chainArr= [];
       throw new Error('You can\'t remove incorrect link!');
     }
     this.chainArr.splice(position - 1, 1);
